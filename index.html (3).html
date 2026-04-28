@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terrabusi — Sabor que une generaciones</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #FAF6F0;
+    --warm-white: #FFFDF9;
+    --terracotta: #C8501A;
+    --terracotta-dark: #9E3C12;
+    --terracotta-light: #E8845A;
+    --amber: #E8A23A;
+    --amber-light: #F5C96A;
+    --chocolate: #3D1F0D;
+    --chocolate-mid: #6B3520;
+    --sand: #D4B896;
+    --sand-light: #EEE0CE;
+    --text-main: #2A1508;
+    --text-muted: #7A5A45;
+    --gold: #C89A2E;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-main);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(250,246,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,80,26,0.12);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 900;
+    color: var(--terracotta);
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--chocolate); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem; font-weight: 500;
+    color: var(--text-muted); text-decoration: none;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--terracotta); }
+  .nav-cta {
+    background: var(--terracotta);
+    color: #fff; border: none; cursor: pointer;
+    padding: 0.65rem 1.6rem; border-radius: 2rem;
+    font-size: 0.85rem; font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.05em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--terracotta-dark); transform: scale(1.03); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    background: var(--warm-white);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; right: -8rem; top: -8rem;
+    width: 60rem; height: 60rem;
+    background: radial-gradient(circle, rgba(232,162,58,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--terracotta);
+    background: rgba(200,80,26,0.08); padding: 0.4rem 1rem;
+    border-radius: 2rem; margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--terracotta);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 900; line-height: 1.05;
+    color: var(--chocolate); margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--terracotta);
+  }
+  .hero-sub {
+    font-size: 1.05rem; line-height: 1.75;
+    color: var(--text-muted); max-width: 44ch;
+    margin-bottom: 2.5rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--terracotta); color: #fff;
+    border: none; cursor: pointer;
+    padding: 0.9rem 2.2rem; border-radius: 2rem;
+    font-size: 0.95rem; font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--chocolate);
+    border: 1.5px solid var(--sand); cursor: pointer;
+    padding: 0.9rem 2.2rem; border-radius: 2rem;
+    font-size: 0.95rem; font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    transition: border-color 0.2s, transform 0.15s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--terracotta); color: var(--terracotta); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3rem;
+    padding-top: 2rem; border-top: 1px solid var(--sand-light);
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: var(--chocolate);
+  }
+  .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.15rem; }
+
+  .hero-visual {
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .hero-circle {
+    width: 440px; height: 440px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--amber-light), var(--terracotta-light));
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .hero-circle-inner {
+    width: 320px; height: 320px; border-radius: 50%;
+    background: var(--warm-white);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; gap: 0.5rem;
+    box-shadow: 0 20px 60px rgba(61,31,13,0.15);
+  }
+  .hero-circle-inner .brand-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem; font-weight: 900; color: var(--terracotta);
+    line-height: 1;
+  }
+  .hero-circle-inner .brand-since {
+    font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .floating-badge {
+    position: absolute;
+    background: var(--chocolate);
+    color: #fff; border-radius: 1rem;
+    padding: 0.6rem 1.1rem;
+    font-size: 0.8rem; font-weight: 500;
+    box-shadow: 0 8px 24px rgba(61,31,13,0.2);
+  }
+  .badge-tita { top: 2rem; right: -1rem; }
+  .badge-rhodesia { bottom: 3rem; left: -2rem; background: var(--terracotta); }
+  .badge-pepitos { top: 50%; right: -3rem; background: var(--gold); color: var(--chocolate); }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 5rem 4rem; }
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--terracotta); font-weight: 500; margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 900; line-height: 1.1; color: var(--chocolate);
+    margin-bottom: 1.25rem;
+  }
+  .section-sub {
+    font-size: 1rem; line-height: 1.7; color: var(--text-muted);
+    max-width: 52ch;
+  }
+
+  /* ── VALORES ── */
+  .valores-section { background: var(--chocolate); color: var(--cream); }
+  .valores-section .section-label { color: var(--amber-light); }
+  .valores-section .section-title { color: var(--cream); }
+  .valores-section .section-sub { color: var(--sand); }
+  .valores-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .valor-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 1.25rem; padding: 2rem 1.5rem;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .valor-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-4px); }
+  .valor-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; font-weight: 900; color: var(--terracotta-light);
+    opacity: 0.5; line-height: 1;
+  }
+  .valor-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--cream); margin: 0.75rem 0 0.5rem;
+  }
+  .valor-desc { font-size: 0.88rem; color: var(--sand); line-height: 1.6; }
+
+  /* ── PRODUCTOS ── */
+  .productos-section { background: var(--warm-white); }
+  .search-bar {
+    display: flex; align-items: center; gap: 0.75rem;
+    background: var(--cream); border: 1.5px solid var(--sand-light);
+    border-radius: 3rem; padding: 0.6rem 1.2rem;
+    max-width: 360px; margin-bottom: 3rem;
+  }
+  .search-bar input {
+    border: none; background: transparent; outline: none;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    color: var(--text-main); width: 100%;
+  }
+  .search-icon { color: var(--text-muted); font-size: 1rem; }
+  .productos-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  .producto-card {
+    background: var(--cream); border-radius: 1.5rem;
+    overflow: hidden; border: 1px solid var(--sand-light);
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+  }
+  .producto-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(61,31,13,0.1);
+  }
+  .producto-img {
+    height: 160px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem;
+    position: relative; overflow: hidden;
+  }
+  .producto-body { padding: 1.25rem; }
+  .producto-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--chocolate); margin-bottom: 0.3rem;
+  }
+  .producto-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1rem; }
+  .producto-footer { display: flex; align-items: center; justify-content: space-between; }
+  .producto-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700; color: var(--terracotta);
+  }
+  .btn-add {
+    background: var(--terracotta); color: #fff; border: none;
+    padding: 0.5rem 1.1rem; border-radius: 2rem; cursor: pointer;
+    font-size: 0.82rem; font-weight: 500; font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s;
+  }
+  .btn-add:hover { background: var(--terracotta-dark); }
+
+  /* ── PROCESO ── */
+  .proceso-section {
+    background: var(--sand-light);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .proceso-steps { display: flex; flex-direction: column; gap: 2rem; margin-top: 2rem; }
+  .paso {
+    display: flex; gap: 1.25rem; align-items: flex-start;
+  }
+  .paso-num {
+    width: 2.5rem; height: 2.5rem; border-radius: 50%; flex-shrink: 0;
+    background: var(--terracotta); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; font-weight: 700;
+  }
+  .paso-title { font-weight: 500; color: var(--chocolate); margin-bottom: 0.25rem; }
+  .paso-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+  .proceso-visual {
+    background: var(--cream); border-radius: 2rem;
+    padding: 3rem; text-align: center;
+    box-shadow: 0 30px 80px rgba(61,31,13,0.1);
+  }
+  .proceso-visual .big-emoji { font-size: 5rem; display: block; margin-bottom: 1.5rem; }
+  .proceso-visual p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-style: italic;
+    color: var(--chocolate); line-height: 1.4;
+  }
+
+  /* ── QUIZ ── */
+  .quiz-section { background: var(--warm-white); text-align: center; }
+  .quiz-options {
+    display: flex; justify-content: center; flex-wrap: wrap;
+    gap: 1rem; margin: 2.5rem 0;
+  }
+  .quiz-opt {
+    background: var(--cream); border: 2px solid var(--sand-light);
+    border-radius: 1rem; padding: 1.25rem 2rem;
+    cursor: pointer; transition: all 0.2s;
+    font-size: 0.95rem; color: var(--text-main); font-family: 'DM Sans', sans-serif;
+    min-width: 160px;
+  }
+  .quiz-opt:hover, .quiz-opt.selected {
+    border-color: var(--terracotta); background: rgba(200,80,26,0.06);
+    transform: scale(1.04);
+  }
+  .quiz-opt span { display: block; font-size: 2rem; margin-bottom: 0.5rem; }
+  .quiz-result {
+    background: var(--chocolate); color: var(--cream);
+    border-radius: 1.5rem; padding: 2rem 3rem;
+    display: none; max-width: 480px; margin: 0 auto;
+  }
+  .quiz-result.visible { display: block; }
+  .quiz-result .result-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: var(--amber-light);
+    margin-bottom: 0.5rem;
+  }
+  .quiz-result p { color: var(--sand); font-size: 0.95rem; }
+
+  /* ── RECETAS ── */
+  .recetas-section { background: var(--cream); }
+  .recetas-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .receta-card {
+    background: var(--warm-white); border-radius: 1.5rem;
+    overflow: hidden; border: 1px solid var(--sand-light);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .receta-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(61,31,13,0.08); }
+  .receta-img {
+    height: 130px; font-size: 3.5rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .receta-body { padding: 1.25rem; }
+  .receta-tag {
+    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--terracotta); font-weight: 500; margin-bottom: 0.4rem;
+  }
+  .receta-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700; color: var(--chocolate);
+    margin-bottom: 0.5rem;
+  }
+  .receta-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; }
+
+  /* ── ECOMMERCE / BUNDLES ── */
+  .shop-section { background: var(--chocolate); }
+  .shop-section .section-label { color: var(--amber-light); }
+  .shop-section .section-title { color: var(--cream); }
+  .shop-section .section-sub { color: var(--sand); }
+  .bundles-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .bundle-card {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 1.5rem; padding: 2rem;
+    transition: background 0.2s, transform 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .bundle-card.featured {
+    border-color: var(--amber-light); background: rgba(232,162,58,0.08);
+  }
+  .bundle-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-5px); }
+  .bundle-badge {
+    position: absolute; top: 1rem; right: 1rem;
+    background: var(--amber); color: var(--chocolate);
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 0.3rem 0.75rem; border-radius: 2rem;
+  }
+  .bundle-emoji { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+  .bundle-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700; color: var(--cream); margin-bottom: 0.5rem;
+  }
+  .bundle-items { font-size: 0.82rem; color: var(--sand); margin-bottom: 1.25rem; line-height: 1.7; }
+  .bundle-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: var(--amber-light);
+    margin-bottom: 1.25rem;
+  }
+  .bundle-price span { font-size: 0.9rem; font-family: 'DM Sans', sans-serif; color: var(--sand); margin-left: 0.3rem; }
+  .btn-bundle {
+    width: 100%; background: var(--terracotta); color: #fff; border: none;
+    padding: 0.85rem; border-radius: 2rem; cursor: pointer;
+    font-size: 0.9rem; font-weight: 500; font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s; letter-spacing: 0.03em;
+  }
+  .btn-bundle:hover { background: var(--terracotta-light); }
+  .btn-bundle.featured-btn { background: var(--amber); color: var(--chocolate); }
+  .btn-bundle.featured-btn:hover { background: var(--amber-light); }
+
+  /* ── SUSCRIPCION ── */
+  .suscripcion-section {
+    background: radial-gradient(ellipse at top, rgba(200,80,26,0.08), transparent 60%), var(--cream);
+    text-align: center;
+  }
+  .subs-card {
+    max-width: 640px; margin: 2.5rem auto 0;
+    background: var(--warm-white); border: 1.5px solid var(--sand-light);
+    border-radius: 2rem; padding: 3rem;
+    box-shadow: 0 20px 60px rgba(61,31,13,0.07);
+  }
+  .subs-perks {
+    display: flex; flex-wrap: wrap; gap: 0.75rem;
+    justify-content: center; margin: 1.5rem 0 2rem;
+  }
+  .perk {
+    background: var(--sand-light); color: var(--chocolate);
+    font-size: 0.82rem; font-weight: 500; padding: 0.4rem 1rem;
+    border-radius: 2rem;
+  }
+  .subs-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem; font-weight: 900; color: var(--terracotta);
+    margin-bottom: 0.25rem;
+  }
+  .subs-period { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 2rem; }
+
+  /* ── PUNTOS ── */
+  .puntos-section {
+    background: var(--warm-white);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .puntos-visual {
+    background: var(--terracotta); border-radius: 2rem; padding: 3rem;
+    color: #fff; text-align: center;
+    box-shadow: 0 30px 80px rgba(200,80,26,0.25);
+  }
+  .puntos-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 6rem; font-weight: 900; line-height: 1;
+    color: rgba(255,255,255,0.2);
+  }
+  .puntos-label { font-size: 1.1rem; font-weight: 500; margin-top: 0.5rem; }
+  .puntos-steps { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+  .punto-step {
+    display: flex; align-items: flex-start; gap: 1rem;
+    background: var(--cream); border-radius: 1rem; padding: 1.1rem 1.25rem;
+  }
+  .punto-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .punto-text { font-size: 0.9rem; color: var(--text-main); line-height: 1.5; }
+  .punto-text strong { color: var(--terracotta); font-weight: 500; }
+
+  /* ── NOSTALGIA ── */
+  .nostalgia-section { background: var(--cream); text-align: center; }
+  .nostalgia-timeline {
+    display: flex; overflow-x: auto; gap: 1.5rem;
+    padding: 2rem 0; margin-top: 2rem;
+    scrollbar-width: none;
+  }
+  .nostalgia-timeline::-webkit-scrollbar { display: none; }
+  .timeline-item {
+    flex-shrink: 0; background: var(--warm-white);
+    border-radius: 1.25rem; padding: 1.5rem 1.75rem;
+    border: 1px solid var(--sand-light); min-width: 200px;
+    text-align: left;
+  }
+  .timeline-year {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 900; color: var(--terracotta-light);
+  }
+  .timeline-event { font-size: 0.88rem; color: var(--text-muted); margin-top: 0.4rem; line-height: 1.5; }
+
+  /* ── REGALOS ── */
+  .regalos-section { background: var(--sand-light); }
+  .regalos-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem;
+  }
+  .regalo-card {
+    background: var(--warm-white); border-radius: 1.5rem; padding: 2rem;
+    border: 1px solid var(--sand); text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .regalo-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(61,31,13,0.08); }
+  .regalo-emoji { font-size: 3rem; display: block; margin-bottom: 1rem; }
+  .regalo-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700; color: var(--chocolate); margin-bottom: 0.4rem;
+  }
+  .regalo-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.5rem; }
+
+  /* ── CHATBOT ── */
+  .chatbot-section { background: var(--warm-white); text-align: center; }
+  .chat-window {
+    max-width: 520px; margin: 2.5rem auto 0;
+    background: var(--cream); border-radius: 1.5rem;
+    border: 1.5px solid var(--sand-light);
+    overflow: hidden; box-shadow: 0 20px 60px rgba(61,31,13,0.08);
+  }
+  .chat-header {
+    background: var(--chocolate); color: var(--cream);
+    padding: 1rem 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .chat-avatar {
+    width: 2.25rem; height: 2.25rem; border-radius: 50%;
+    background: var(--terracotta);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .chat-name { font-weight: 500; font-size: 0.9rem; }
+  .chat-status { font-size: 0.72rem; color: var(--sand); }
+  .chat-messages { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; min-height: 180px; }
+  .msg {
+    max-width: 80%; padding: 0.7rem 1rem; border-radius: 1.1rem;
+    font-size: 0.88rem; line-height: 1.5;
+  }
+  .msg-bot { background: var(--warm-white); border: 1px solid var(--sand-light); color: var(--text-main); align-self: flex-start; border-bottom-left-radius: 0.25rem; }
+  .msg-user { background: var(--terracotta); color: #fff; align-self: flex-end; border-bottom-right-radius: 0.25rem; }
+  .chat-input-bar {
+    display: flex; gap: 0.75rem; padding: 1rem 1.25rem;
+    border-top: 1px solid var(--sand-light);
+  }
+  .chat-input-bar input {
+    flex: 1; border: 1.5px solid var(--sand-light); border-radius: 2rem;
+    padding: 0.6rem 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+    background: var(--warm-white); outline: none; color: var(--text-main);
+    transition: border-color 0.2s;
+  }
+  .chat-input-bar input:focus { border-color: var(--terracotta); }
+  .btn-send {
+    background: var(--terracotta); color: #fff; border: none;
+    width: 2.5rem; height: 2.5rem; border-radius: 50%; cursor: pointer;
+    font-size: 1rem; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: background 0.2s;
+  }
+  .btn-send:hover { background: var(--terracotta-dark); }
+
+  /* ── OPORTUNIDAD ── */
+  .oportunidad-section {
+    background: linear-gradient(135deg, var(--chocolate), var(--chocolate-mid));
+    color: var(--cream); text-align: center; padding: 6rem 4rem;
+  }
+  .oportunidad-section .section-label { color: var(--amber-light); }
+  .oportunidad-section .section-title { color: var(--cream); max-width: 20ch; margin: 0 auto 1.5rem; }
+  .oportunidad-section .section-sub { color: var(--sand); margin: 0 auto 3rem; }
+  .oport-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    max-width: 900px; margin: 0 auto 3rem;
+  }
+  .oport-item {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 1.25rem; padding: 2rem 1.5rem;
+  }
+  .oport-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; font-weight: 900; color: var(--amber-light);
+  }
+  .oport-label { font-size: 0.85rem; color: var(--sand); margin-top: 0.4rem; line-height: 1.5; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--chocolate); color: var(--sand);
+    padding: 4rem 4rem 2rem;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+    padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 2rem;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 900; color: var(--terracotta-light);
+    margin-bottom: 0.75rem;
+  }
+  .footer-tagline { font-size: 0.88rem; color: var(--sand); line-height: 1.6; max-width: 30ch; }
+  .footer-col h4 {
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--cream); font-weight: 500; margin-bottom: 1.25rem;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-col ul a {
+    font-size: 0.88rem; color: var(--sand); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-col ul a:hover { color: var(--terracotta-light); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.8rem; color: rgba(212,184,150,0.5);
+  }
+  .social-links { display: flex; gap: 1rem; }
+  .social-links a {
+    color: var(--sand); text-decoration: none; font-size: 0.85rem;
+    transition: color 0.2s;
+  }
+  .social-links a:hover { color: var(--terracotta-light); }
+
+  /* ── CART PANEL ── */
+  .cart-overlay {
+    position: fixed; inset: 0; background: rgba(61,31,13,0.35);
+    z-index: 199; opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .cart-overlay.open { opacity: 1; pointer-events: all; }
+  .cart-panel {
+    position: fixed; top: 0; right: 0; bottom: 0;
+    width: 380px; max-width: 95vw;
+    background: var(--warm-white);
+    z-index: 200; display: flex; flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+    box-shadow: -10px 0 50px rgba(61,31,13,0.12);
+  }
+  .cart-panel.open { transform: translateX(0); }
+  .cart-panel-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.5rem 1.5rem 1rem;
+    border-bottom: 1px solid var(--sand-light);
+  }
+  .cart-panel-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700; color: var(--chocolate);
+  }
+  .cart-close {
+    background: none; border: none; cursor: pointer;
+    font-size: 1.1rem; color: var(--text-muted); padding: 0.3rem 0.5rem;
+    border-radius: 0.5rem; transition: background 0.2s;
+  }
+  .cart-close:hover { background: var(--sand-light); }
+  .cart-items {
+    flex: 1; overflow-y: auto; padding: 1rem 1.5rem;
+  }
+  .cart-empty {
+    text-align: center; color: var(--text-muted);
+    font-size: 0.95rem; line-height: 1.7;
+    padding: 3rem 0;
+  }
+  .cart-item {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0.9rem 0; border-bottom: 1px solid var(--sand-light);
+  }
+  .cart-item-emoji { font-size: 2rem; flex-shrink: 0; }
+  .cart-item-info { flex: 1; }
+  .cart-item-name { font-weight: 500; font-size: 0.92rem; color: var(--chocolate); }
+  .cart-item-price { font-size: 0.85rem; color: var(--terracotta); font-weight: 500; margin-top: 0.15rem; }
+  .cart-item-qty {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.85rem; color: var(--text-muted); margin-top: 0.4rem;
+  }
+  .qty-btn {
+    width: 22px; height: 22px; border-radius: 50%;
+    border: 1px solid var(--sand); background: transparent; cursor: pointer;
+    font-size: 0.9rem; display: flex; align-items: center; justify-content: center;
+    color: var(--text-main); transition: background 0.2s;
+  }
+  .qty-btn:hover { background: var(--sand-light); }
+  .cart-item-remove {
+    background: none; border: none; cursor: pointer;
+    color: var(--text-muted); font-size: 0.85rem; padding: 0.25rem;
+    transition: color 0.2s;
+  }
+  .cart-item-remove:hover { color: var(--terracotta); }
+  .cart-footer {
+    padding: 1rem 1.5rem 1.5rem;
+    border-top: 1px solid var(--sand-light);
+  }
+  .cart-total-row {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 1.25rem;
+    font-size: 1rem; color: var(--text-muted);
+  }
+  .cart-total-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 700; color: var(--chocolate);
+  }
+
+  /* ── WHATSAPP ── */
+  .whatsapp-btn {
+    position: fixed; bottom: 2rem; left: 2rem; z-index: 300;
+    width: 58px; height: 58px; border-radius: 50%;
+    background: #25D366;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+  }
+  .whatsapp-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 32px rgba(37,211,102,0.55);
+  }
+
+  /* ── MERCADO PAGO MODAL ── */
+  .mp-overlay {
+    position: fixed; inset: 0; background: rgba(61,31,13,0.5);
+    z-index: 400; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .mp-overlay.open { opacity: 1; pointer-events: all; }
+  .mp-modal {
+    background: var(--warm-white); border-radius: 2rem;
+    padding: 2.5rem; max-width: 480px; width: 90%;
+    box-shadow: 0 30px 80px rgba(61,31,13,0.2);
+    transform: scale(0.95); transition: transform 0.3s;
+  }
+  .mp-overlay.open .mp-modal { transform: scale(1); }
+  .mp-modal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+  .mp-modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700; color: var(--chocolate);
+  }
+  .mp-close {
+    background: none; border: none; cursor: pointer;
+    font-size: 1.1rem; color: var(--text-muted); padding: 0.3rem 0.5rem;
+    border-radius: 0.5rem; transition: background 0.2s;
+  }
+  .mp-close:hover { background: var(--sand-light); }
+  .mp-summary {
+    background: var(--cream); border-radius: 1rem; padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .mp-summary-title { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem; }
+  .mp-summary-item { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-main); padding: 0.3rem 0; }
+  .mp-summary-total { display: flex; justify-content: space-between; padding-top: 0.75rem; margin-top: 0.75rem; border-top: 1px solid var(--sand-light); }
+  .mp-summary-total span:first-child { font-weight: 500; color: var(--chocolate); }
+  .mp-summary-total span:last-child { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--terracotta); }
+  .mp-form { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.25rem; }
+  .mp-form input {
+    border: 1.5px solid var(--sand-light); border-radius: 0.75rem;
+    padding: 0.75rem 1rem; font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; color: var(--text-main); background: var(--cream);
+    outline: none; transition: border-color 0.2s;
+  }
+  .mp-form input:focus { border-color: var(--terracotta); }
+  .mp-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .btn-mp {
+    width: 100%; background: #009EE3; color: #fff; border: none;
+    padding: 1rem; border-radius: 2rem; cursor: pointer;
+    font-size: 1rem; font-weight: 500; font-family: 'DM Sans', sans-serif;
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    transition: background 0.2s;
+  }
+  .btn-mp:hover { background: #0080C0; }
+  .mp-secure { text-align: center; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.75rem; }
+  .mp-note {
+    background: rgba(0,158,227,0.08); border: 1px solid rgba(0,158,227,0.2);
+    border-radius: 0.75rem; padding: 0.75rem 1rem;
+    font-size: 0.82rem; color: #0080C0; margin-bottom: 1.25rem; line-height: 1.5;
+  }
+
+  /* ── CART TOAST ── */
+  .toast {
+    position: fixed; bottom: 2rem; right: 2rem;
+    background: var(--chocolate); color: var(--cream);
+    padding: 1rem 1.5rem; border-radius: 1rem;
+    font-size: 0.9rem; font-weight: 500;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transform: translateY(6rem); opacity: 0;
+    transition: all 0.35s cubic-bezier(.34,1.56,.64,1);
+    z-index: 999;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  /* ── CART BADGE ── */
+  .cart-btn { position: relative; }
+  .cart-count {
+    position: absolute; top: -6px; right: -6px;
+    background: var(--terracotta); color: #fff;
+    width: 18px; height: 18px; border-radius: 50%;
+    font-size: 0.68rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.2s;
+  }
+  .cart-count.visible { opacity: 1; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-content > * { animation: fadeUp 0.7s ease both; }
+  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.4s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.55s; }
+  .hero-content > *:nth-child(5) { animation-delay: 0.7s; }
+  .hero-visual { animation: fadeUp 0.9s ease 0.3s both; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; text-align: center; }
+    .hero-sub { max-width: 100%; }
+    .hero-btns { justify-content: center; }
+    .hero-stats { justify-content: center; }
+    .hero-visual { display: none; }
+    section { padding: 3.5rem 1.5rem; }
+    .valores-grid { grid-template-columns: 1fr 1fr; }
+    .bundles-grid { grid-template-columns: 1fr; }
+    .recetas-grid { grid-template-columns: 1fr; }
+    .regalos-grid { grid-template-columns: 1fr; }
+    .oport-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .proceso-section { grid-template-columns: 1fr; }
+    .puntos-section { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Terra<span>busi</span></div>
+  <ul class="nav-links">
+    <li><a href="#productos">Productos</a></li>
+    <li><a href="#recetas">Recetas</a></li>
+    <li><a href="#tienda">Tienda</a></li>
+    <li><a href="#suscripcion">Club</a></li>
+    <li><a href="#nosotros">Historia</a></li>
+  </ul>
+  <button class="nav-cta cart-btn" onclick="toggleCart()">
+    🛒 Carrito
+    <span class="cart-count" id="cartCount">0</span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Desde 1905 · Argentina</div>
+    <h1>El sabor que <em>une</em> generaciones</h1>
+    <p class="hero-sub">Más de 120 años de tradición en cada mordida. Tus galletas favoritas, ahora con tienda online, recetas y experiencias únicas para toda la familia.</p>
+    <div class="hero-btns">
+      <a href="#tienda" class="btn-primary">Comprar ahora</a>
+      <a href="#productos" class="btn-outline">Ver productos</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">120+</div>
+        <div class="stat-label">Años de historia</div>
+      </div>
+      <div>
+        <div class="stat-num">1M+</div>
+        <div class="stat-label">Familias</div>
+      </div>
+      <div>
+        <div class="stat-num">LATAM</div>
+        <div class="stat-label">Presencia regional</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-circle">
+      <div class="hero-circle-inner">
+        <span class="brand-big">T</span>
+        <span class="brand-since">Terrabusi · est. 1905</span>
+      </div>
+      <div class="floating-badge badge-tita">🍫 Tita</div>
+      <div class="floating-badge badge-rhodesia">🍪 Rhodesia</div>
+      <div class="floating-badge badge-pepitos">🌰 Pepitos</div>
+    </div>
+  </div>
+</section>
+
+<!-- VALORES -->
+<section class="valores-section" id="nosotros">
+  <div class="section-label">Quiénes somos</div>
+  <div class="section-title">Más que galletas.<br>Una historia.</div>
+  <p class="section-sub">Terrabusi nació en Argentina con una promesa simple: hacer productos que la gente ame de verdad. Hoy seguimos fieles a eso.</p>
+  <div class="valores-grid">
+    <div class="valor-card">
+      <div class="valor-num">01</div>
+      <div class="valor-title">Tradición</div>
+      <div class="valor-desc">Recetas que se transmiten de generación en generación con el mismo cuidado artesanal.</div>
+    </div>
+    <div class="valor-card">
+      <div class="valor-num">02</div>
+      <div class="valor-title">Calidad</div>
+      <div class="valor-desc">Ingredientes seleccionados y procesos que garantizan el sabor que esperás en cada paquete.</div>
+    </div>
+    <div class="valor-card">
+      <div class="valor-num">03</div>
+      <div class="valor-title">Innovación</div>
+      <div class="valor-desc">Nuevos sabores, formatos digitales y experiencias modernas sin perder nuestra esencia.</div>
+    </div>
+    <div class="valor-card">
+      <div class="valor-num">04</div>
+      <div class="valor-title">Cercanía</div>
+      <div class="valor-desc">Presente en cada mesa argentina. El snack favorito de cada momento del día.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section class="productos-section" id="productos">
+  <div class="section-label">Galería</div>
+  <div class="section-title">Nuestros clásicos</div>
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" placeholder="Buscar producto..." id="searchInput" oninput="filterProductos()" />
+  </div>
+  <div class="productos-grid" id="productosGrid">
+    <div class="producto-card" data-name="tita">
+      <div class="producto-img" style="background: linear-gradient(135deg,#f5ddd0,#e8c4b0);">🍫</div>
+      <div class="producto-body">
+        <div class="producto-name">Tita</div>
+        <div class="producto-desc">Galletitas de chocolate con relleno de chocolate al leche. Un clásico eterno.</div>
+        <div class="producto-footer">
+          <div class="producto-price">$850</div>
+          <button class="btn-add" onclick="addToCart('Tita')">+ Agregar</button>
+        </div>
+      </div>
+    </div>
+    <div class="producto-card" data-name="rhodesia">
+      <div class="producto-img" style="background: linear-gradient(135deg,#ede0cc,#d4b896);">🍪</div>
+      <div class="producto-body">
+        <div class="producto-name">Rhodesia</div>
+        <div class="producto-desc">Galleta de chocolate intenso con relleno suave. El favorito de los amantes del cacao.</div>
+        <div class="producto-footer">
+          <div class="producto-price">$920</div>
+          <button class="btn-add" onclick="addToCart('Rhodesia')">+ Agregar</button>
+        </div>
+      </div>
+    </div>
+    <div class="producto-card" data-name="pepitos">
+      <div class="producto-img" style="background: linear-gradient(135deg,#f5e8cc,#e8c87a);">🌰</div>
+      <div class="producto-body">
+        <div class="producto-name">Pepitos</div>
+        <div class="producto-desc">Galletitas crocantes con chips de chocolate. El snack divertido de siempre.</div>
+        <div class="producto-footer">
+          <div class="producto-price">$780</div>
+          <button class="btn-add" onclick="addToCart('Pepitos')">+ Agregar</button>
+        </div>
+      </div>
+    </div>
+    <div class="producto-card" data-name="express">
+      <div class="producto-img" style="background: linear-gradient(135deg,#e8f0d4,#c4d897);">☕</div>
+      <div class="producto-body">
+        <div class="producto-name">Express</div>
+        <div class="producto-desc">Perfectas para acompañar el mate o el café. Livianas y crujientes.</div>
+        <div class="producto-footer">
+          <div class="producto-price">$690</div>
+          <button class="btn-add" onclick="addToCart('Express')">+ Agregar</button>
+        </div>
+      </div>
+    </div>
+    <div class="producto-card" data-name="variedad">
+      <div class="producto-img" style="background: linear-gradient(135deg,#edd8f0,#d4a0dc);">🎁</div>
+      <div class="producto-body">
+        <div class="producto-name">Variedad</div>
+        <div class="producto-desc">Surtido con todos los clásicos Terrabusi. Ideal para compartir en familia.</div>
+        <div class="producto-footer">
+          <div class="producto-price">$1.290</div>
+          <button class="btn-add" onclick="addToCart('Variedad')">+ Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="proceso-section">
+  <div>
+    <div class="section-label">Cómo se hace</div>
+    <div class="section-title">Calidad en cada paso</div>
+    <p class="section-sub">Cada galleta Terrabusi pasa por un proceso riguroso que garantiza el sabor que conocés.</p>
+    <div class="proceso-steps">
+      <div class="paso">
+        <div class="paso-num">1</div>
+        <div>
+          <div class="paso-title">Selección de ingredientes</div>
+          <div class="paso-desc">Harina, cacao y rellenos de la más alta calidad, seleccionados con estándares internacionales.</div>
+        </div>
+      </div>
+      <div class="paso">
+        <div class="paso-num">2</div>
+        <div>
+          <div class="paso-title">Mezcla y moldeo</div>
+          <div class="paso-desc">Proceso automatizado con control de temperatura para lograr la textura perfecta.</div>
+        </div>
+      </div>
+      <div class="paso">
+        <div class="paso-num">3</div>
+        <div>
+          <div class="paso-title">Horneado perfecto</div>
+          <div class="paso-desc">Hornos de última generación que garantizan cocción uniforme y el crujiente ideal.</div>
+        </div>
+      </div>
+      <div class="paso">
+        <div class="paso-num">4</div>
+        <div>
+          <div class="paso-title">Empaque fresco</div>
+          <div class="paso-desc">Envasado al vacío inmediatamente después del horneado para preservar frescura y sabor.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="proceso-visual">
+    <span class="big-emoji">🏭</span>
+    <p>"Cada galleta que sale de nuestras plantas lleva 120 años de saber hacer."</p>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="quiz-section">
+  <div class="section-label">Interactivo</div>
+  <div class="section-title">¿Qué galleta sos?</div>
+  <p class="section-sub" style="margin: 0 auto;">Elegí tu estado de ánimo y descubrí tu galleta Terrabusi ideal.</p>
+  <div class="quiz-options">
+    <div class="quiz-opt" onclick="quizSelect(this, 'Tita', '🍫 Sos Tita — clásico/a, dulce y eterno/a. El chocolate con leche es tu lenguaje del amor.')">
+      <span>😌</span>Tranquilo/a
+    </div>
+    <div class="quiz-opt" onclick="quizSelect(this, 'Rhodesia', '🍪 Sos Rhodesia — intenso/a, apasionado/a y con mucho carácter. El chocolate oscuro te representa.')">
+      <span>🔥</span>Intenso/a
+    </div>
+    <div class="quiz-opt" onclick="quizSelect(this, 'Pepitos', '🌰 Sos Pepitos — divertido/a, crocante y lleno/a de energía. Siempre listo/a para el siguiente plan.')">
+      <span>😄</span>Divertido/a
+    </div>
+    <div class="quiz-opt" onclick="quizSelect(this, 'Express', '☕ Sos Express — reflexivo/a, amante del mate y de los momentos simples que importan.')">
+      <span>☕</span>Tranqui con mate
+    </div>
+  </div>
+  <div class="quiz-result" id="quizResult">
+    <div class="result-title" id="quizResultTitle"></div>
+    <p id="quizResultText"></p>
+  </div>
+</section>
+
+<!-- RECETAS -->
+<section class="recetas-section" id="recetas">
+  <div class="section-label">Blog & Recetas</div>
+  <div class="section-title">Creatividad con galletas</div>
+  <p class="section-sub">Recetas únicas creadas con tus Terrabusi favoritas. Para sorprender a toda la familia.</p>
+  <div class="recetas-grid">
+    <div class="receta-card">
+      <div class="receta-img" style="background: linear-gradient(135deg,#f5ddd0,#e8c4b0);">🎂</div>
+      <div class="receta-body">
+        <div class="receta-tag">Postre · 45 min</div>
+        <div class="receta-name">Cheesecake con Tita</div>
+        <div class="receta-desc">Base de Tita triturada, relleno cremoso de queso Philadelphia y cobertura de chocolate. Impresionante.</div>
+      </div>
+    </div>
+    <div class="receta-card">
+      <div class="receta-img" style="background: linear-gradient(135deg,#f5e8cc,#e8c87a);">🥤</div>
+      <div class="receta-body">
+        <div class="receta-tag">Bebida · 10 min</div>
+        <div class="receta-name">Milkshake Pepitos</div>
+        <div class="receta-desc">Licuado de helado de vainilla con Pepitos enteros. El shake más rico del verano.</div>
+      </div>
+    </div>
+    <div class="receta-card">
+      <div class="receta-img" style="background: linear-gradient(135deg,#ede0cc,#d4b896);">🍮</div>
+      <div class="receta-body">
+        <div class="receta-tag">Postre · 30 min</div>
+        <div class="receta-name">Postre Rhodesia</div>
+        <div class="receta-desc">Capas de Rhodesia, crema y mousse de chocolate. Un postre que se hace viral en cada reunión.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIENDA / BUNDLES -->
+<section class="shop-section" id="tienda">
+  <div class="section-label">E-commerce</div>
+  <div class="section-title">Packs especiales</div>
+  <p class="section-sub">Combos pensados para cada momento. Con envío a todo el país.</p>
+  <div class="bundles-grid">
+    <div class="bundle-card">
+      <span class="bundle-emoji">🎁</span>
+      <div class="bundle-name">Pack Clásico</div>
+      <div class="bundle-items">· Tita × 2<br>· Rhodesia × 1<br>· Pepitos × 1<br>· Envío gratis CABA</div>
+      <div class="bundle-price">$2.800 <span>/pack</span></div>
+      <button class="btn-bundle" onclick="addToCart('Pack Clásico')">Agregar al carrito</button>
+    </div>
+    <div class="bundle-card featured">
+      <div class="bundle-badge">⭐ Más popular</div>
+      <span class="bundle-emoji">🏡</span>
+      <div class="bundle-name">Pack Familiar</div>
+      <div class="bundle-items">· Tita × 4<br>· Rhodesia × 2<br>· Pepitos × 3<br>· Express × 2<br>· Envío gratis todo el país</div>
+      <div class="bundle-price">$5.990 <span>/pack</span></div>
+      <button class="btn-bundle featured-btn" onclick="addToCart('Pack Familiar')">Agregar al carrito</button>
+    </div>
+    <div class="bundle-card">
+      <span class="bundle-emoji">🎀</span>
+      <div class="bundle-name">Pack Regalo</div>
+      <div class="bundle-items">· Caja personalizada<br>· Todos los clásicos<br>· Tarjeta dedicatoria<br>· Moño y packaging premium</div>
+      <div class="bundle-price">$4.500 <span>/caja</span></div>
+      <button class="btn-bundle" onclick="addToCart('Pack Regalo')">Agregar al carrito</button>
+    </div>
+  </div>
+</section>
+
+<!-- SUSCRIPCION -->
+<section class="suscripcion-section" id="suscripcion">
+  <div class="section-label">Club Terrabusi</div>
+  <div class="section-title">Suscripción mensual</div>
+  <p class="section-sub" style="margin: 0 auto;">Recibí snacks sorpresa todos los meses con descuentos exclusivos para miembros.</p>
+  <div class="subs-card">
+    <div class="subs-perks">
+      <div class="perk">🚚 Envío gratis</div>
+      <div class="perk">🎁 Snacks sorpresa</div>
+      <div class="perk">💰 15% de descuento</div>
+      <div class="perk">🏅 Puntos dobles</div>
+      <div class="perk">📦 Cancelás cuando querés</div>
+    </div>
+    <div class="subs-price">$1.999</div>
+    <div class="subs-period">por mes · sin compromiso</div>
+    <button class="btn-primary" onclick="addToCart('Club Terrabusi')">Suscribirme ahora</button>
+  </div>
+</section>
+
+<!-- PUNTOS -->
+<section class="puntos-section">
+  <div class="puntos-visual">
+    <div class="puntos-big">★</div>
+    <div class="puntos-label">Programa de puntos</div>
+  </div>
+  <div>
+    <div class="section-label">Fidelización</div>
+    <div class="section-title">Sumá y ganás</div>
+    <p class="section-sub">Con cada compra acumulás puntos para canjear por productos, descuentos y experiencias únicas.</p>
+    <div class="puntos-steps">
+      <div class="punto-step">
+        <span class="punto-icon">🛒</span>
+        <div class="punto-text"><strong>Comprás</strong> → Sumás 1 punto por cada $100 gastados</div>
+      </div>
+      <div class="punto-step">
+        <span class="punto-icon">🌟</span>
+        <div class="punto-text"><strong>Acumulás</strong> → Llegás a niveles: Plata, Oro y Diamante</div>
+      </div>
+      <div class="punto-step">
+        <span class="punto-icon">🎁</span>
+        <div class="punto-text"><strong>Canjeás</strong> → Descuentos, packs gratuitos y experiencias de fábrica</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOSTALGIA -->
+<section class="nostalgia-section">
+  <div class="section-label">Historia</div>
+  <div class="section-title">120 años de sabor</div>
+  <p class="section-sub" style="margin: 0 auto;">Recordá los momentos más icónicos de la marca que formó parte de tu infancia.</p>
+  <div class="nostalgia-timeline">
+    <div class="timeline-item">
+      <div class="timeline-year">1905</div>
+      <div class="timeline-event">Fundación de Terrabusi en Buenos Aires. Las primeras galletas salen al mercado.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1930</div>
+      <div class="timeline-event">Nace la Tita, la galletita de chocolate que se volvería un ícono nacional.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1955</div>
+      <div class="timeline-event">Llega Rhodesia al mercado. Chocolate intenso para los más exigentes.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1970</div>
+      <div class="timeline-event">Se lanza Pepitos, el snack crocante que conquista a los más jóvenes.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1990</div>
+      <div class="timeline-event">Expansión regional. Terrabusi llega a Uruguay, Chile y Paraguay.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2025</div>
+      <div class="timeline-event">Lanzamiento del canal digital y el Club Terrabusi para toda América Latina.</div>
+    </div>
+  </div>
+</section>
+
+<!-- REGALOS -->
+<section class="regalos-section">
+  <div class="section-label">Personalización</div>
+  <div class="section-title">Regalos únicos</div>
+  <p class="section-sub">Armá cajas personalizadas con tus galletas favoritas. Perfecto para cumpleaños, fiestas y empresas.</p>
+  <div class="regalos-grid">
+    <div class="regalo-card">
+      <span class="regalo-emoji">🎂</span>
+      <div class="regalo-name">Caja Cumpleaños</div>
+      <div class="regalo-desc">Armá tu mix con hasta 5 productos, tarjeta dedicatoria y packaging temático.</div>
+      <button class="btn-primary" onclick="addToCart('Caja Cumpleaños')">Configurar caja</button>
+    </div>
+    <div class="regalo-card">
+      <span class="regalo-emoji">🏢</span>
+      <div class="regalo-name">Pack Corporativo</div>
+      <div class="regalo-desc">Ideal para empresas. Packaging con tu logo y entrega a domicilio a todo el país.</div>
+      <button class="btn-primary" onclick="addToCart('Pack Corporativo')">Solicitar cotización</button>
+    </div>
+    <div class="regalo-card">
+      <span class="regalo-emoji">🎄</span>
+      <div class="regalo-name">Edición Especial</div>
+      <div class="regalo-desc">Cajas temáticas por temporada: Navidad, Pascuas, Día del Padre y más.</div>
+      <button class="btn-primary" onclick="addToCart('Edición Especial')">Ver ediciones</button>
+    </div>
+  </div>
+</section>
+
+<!-- CHATBOT -->
+<section class="chatbot-section">
+  <div class="section-label">Atención 24/7</div>
+  <div class="section-title">¿En qué te ayudamos?</div>
+  <p class="section-sub" style="margin: 0 auto;">Nuestro asistente virtual está siempre disponible para responder tus consultas.</p>
+  <div class="chat-window">
+    <div class="chat-header">
+      <div class="chat-avatar">🍪</div>
+      <div>
+        <div class="chat-name">Asistente Terrabusi</div>
+        <div class="chat-status">🟢 En línea ahora</div>
+      </div>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg msg-bot">¡Hola! 👋 Soy el asistente de Terrabusi. ¿En qué puedo ayudarte hoy?</div>
+      <div class="msg msg-bot">Puedo ayudarte con pedidos, recetas, el Club Terrabusi o cualquier consulta sobre nuestros productos.</div>
+    </div>
+    <div class="chat-input-bar">
+      <input type="text" id="chatInput" placeholder="Escribí tu consulta..." onkeydown="if(event.key==='Enter') sendChat()" />
+      <button class="btn-send" onclick="sendChat()">➤</button>
+    </div>
+  </div>
+</section>
+
+<!-- OPORTUNIDAD -->
+<section class="oportunidad-section">
+  <div class="section-label">Visión estratégica</div>
+  <div class="section-title">El ecosistema digital de snacks más grande de Latinoamérica</div>
+  <p class="section-sub">Una oportunidad única de transformar 120 años de amor de marca en crecimiento digital sostenido.</p>
+  <div class="oport-grid">
+    <div class="oport-item">
+      <div class="oport-num">$8B</div>
+      <div class="oport-label">Mercado de snacks en LATAM para 2027</div>
+    </div>
+    <div class="oport-item">
+      <div class="oport-num">68%</div>
+      <div class="oport-label">Crecimiento del e-commerce de alimentos en Argentina</div>
+    </div>
+    <div class="oport-item">
+      <div class="oport-num">4.2x</div>
+      <div class="oport-label">ROI proyectado del canal digital en 3 años</div>
+    </div>
+  </div>
+  <a href="#tienda" class="btn-primary" style="font-size: 1rem; padding: 1.1rem 3rem;">Empezar ahora →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Terrabusi</div>
+      <div class="footer-tagline">Sabor que une generaciones. Presente en cada mesa argentina desde 1905.</div>
+    </div>
+    <div class="footer-col">
+      <h4>Productos</h4>
+      <ul>
+        <li><a href="#">Tita</a></li>
+        <li><a href="#">Rhodesia</a></li>
+        <li><a href="#">Pepitos</a></li>
+        <li><a href="#">Express</a></li>
+        <li><a href="#">Ver todos</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="#">Historia</a></li>
+        <li><a href="#">Valores</a></li>
+        <li><a href="#">Sustentabilidad</a></li>
+        <li><a href="#">Prensa</a></li>
+        <li><a href="#">Trabaja con nosotros</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Ayuda</h4>
+      <ul>
+        <li><a href="#">Seguir pedido</a></li>
+        <li><a href="#">Envíos</a></li>
+        <li><a href="#">Devoluciones</a></li>
+        <li><a href="#">Contacto</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Terrabusi. Todos los derechos reservados.</span>
+    <div class="social-links">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">TikTok</a>
+      <a href="#">YouTube</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MERCADO PAGO MODAL -->
+<div class="mp-overlay" id="mpOverlay" onclick="closeMPifOutside(event)">
+  <div class="mp-modal">
+    <div class="mp-modal-header">
+      <div class="mp-modal-title">💳 Finalizar compra</div>
+      <button class="mp-close" onclick="closeMP()">✕</button>
+    </div>
+    <div class="mp-note">ℹ️ Próximamente integración completa con Mercado Pago. Por ahora completá tus datos y te contactamos para confirmar el pago.</div>
+    <div class="mp-summary">
+      <div class="mp-summary-title">Resumen del pedido</div>
+      <div id="mpSummaryItems"></div>
+      <div class="mp-summary-total">
+        <span>Total</span>
+        <span id="mpSummaryTotal">$0</span>
+      </div>
+    </div>
+    <div class="mp-form">
+      <input type="text" placeholder="Nombre completo" id="mpNombre" />
+      <input type="email" placeholder="Email" id="mpEmail" />
+      <input type="tel" placeholder="Teléfono / WhatsApp" id="mpTel" />
+      <input type="text" placeholder="Dirección de envío" id="mpDireccion" />
+      <div class="mp-form-row">
+        <input type="text" placeholder="Ciudad" id="mpCiudad" />
+        <input type="text" placeholder="Provincia" id="mpProvincia" />
+      </div>
+    </div>
+    <button class="btn-mp" onclick="confirmarPedido()">
+      <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+      Confirmar pedido
+    </button>
+    <div class="mp-secure">🔒 Tus datos están seguros · Contacto por WhatsApp para confirmar pago</div>
+  </div>
+</div>
+
+<!-- WHATSAPP BUTTON -->
+<a href="https://wa.me/5492615466940?text=Hola!%20Vi%20el%20sitio%20de%20Terrabusi%20y%20quiero%20consultar%20sobre%20un%20producto%20%F0%9F%8D%AA" target="_blank" class="whatsapp-btn" title="Consultanos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.864L.054 23.447a.5.5 0 0 0 .499.553h.056l5.741-1.505A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.9 9.9 0 0 1-5.031-1.371l-.36-.214-3.733.979.997-3.648-.235-.374A9.859 9.859 0 0 1 2.1 12C2.1 6.534 6.534 2.1 12 2.1c5.466 0 9.9 4.434 9.9 9.9 0 5.466-4.434 9.9-9.9 9.9z"/></svg>
+</a>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+<!-- CART PANEL -->
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-panel-header">
+    <div class="cart-panel-title">🛒 Tu carrito</div>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty">
+      <span style="font-size:3rem;display:block;margin-bottom:1rem;">🍪</span>
+      Tu carrito está vacío.<br>¡Agregá tus galletas favoritas!
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none;">
+    <div class="cart-total-row">
+      <span>Total</span>
+      <span class="cart-total-price" id="cartTotal">$0</span>
+    </div>
+    <button class="btn-primary" style="width:100%;text-align:center;border:none;cursor:pointer;font-size:1rem;padding:1rem;" onclick="checkout()">Finalizar compra →</button>
+    <button class="btn-outline" style="width:100%;text-align:center;margin-top:0.75rem;font-size:0.9rem;padding:0.75rem;" onclick="clearCart()">Vaciar carrito</button>
+  </div>
+</div>
+
+<script>
+  const prices = {
+    'Tita': 850, 'Rhodesia': 920, 'Pepitos': 780, 'Express': 690,
+    'Variedad': 1290, 'Pack Clásico': 2800, 'Pack Familiar': 5990,
+    'Pack Regalo': 4500, 'Caja Cumpleaños': 3500, 'Pack Corporativo': 8000,
+    'Edición Especial': 4200, 'Club Terrabusi': 1999
+  };
+  const emojis = {
+    'Tita': '🍫', 'Rhodesia': '🍪', 'Pepitos': '🌰', 'Express': '☕',
+    'Variedad': '🎁', 'Pack Clásico': '🎁', 'Pack Familiar': '🏡',
+    'Pack Regalo': '🎀', 'Caja Cumpleaños': '🎂', 'Pack Corporativo': '🏢',
+    'Edición Especial': '🎄', 'Club Terrabusi': '⭐'
+  };
+
+  let cart = {};
+
+  function addToCart(item) {
+    cart[item] = (cart[item] || 0) + 1;
+    updateCartUI();
+    showToast('✓ ' + item + ' agregado al carrito');
+  }
+
+  function removeFromCart(item) {
+    delete cart[item];
+    updateCartUI();
+  }
+
+  function changeQty(item, delta) {
+    cart[item] = (cart[item] || 0) + delta;
+    if (cart[item] <= 0) delete cart[item];
+    updateCartUI();
+  }
+
+  function clearCart() {
+    cart = {};
+    updateCartUI();
+  }
+
+  function updateCartUI() {
+    const total = Object.keys(cart).reduce((s, k) => s + (prices[k] || 0) * cart[k], 0);
+    const count = Object.values(cart).reduce((s, v) => s + v, 0);
+
+    const countEl = document.getElementById('cartCount');
+    countEl.textContent = count;
+    countEl.classList.toggle('visible', count > 0);
+
+    const itemsEl = document.getElementById('cartItems');
+    const emptyEl = document.getElementById('cartEmpty');
+    const footerEl = document.getElementById('cartFooter');
+    document.getElementById('cartTotal').textContent = '$' + total.toLocaleString('es-AR');
+
+    const keys = Object.keys(cart);
+    if (keys.length === 0) {
+      emptyEl.style.display = 'block';
+      footerEl.style.display = 'none';
+      itemsEl.innerHTML = '';
+      itemsEl.appendChild(emptyEl);
+      return;
+    }
+
+    emptyEl.style.display = 'none';
+    footerEl.style.display = 'block';
+
+    itemsEl.innerHTML = '';
+    keys.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `
+        <div class="cart-item-emoji">${emojis[item] || '🍪'}</div>
+        <div class="cart-item-info">
+          <div class="cart-item-name">${item}</div>
+          <div class="cart-item-price">$${((prices[item] || 0) * cart[item]).toLocaleString('es-AR')}</div>
+          <div class="cart-item-qty">
+            <button class="qty-btn" onclick="changeQty('${item}', -1)">−</button>
+            <span>${cart[item]}</span>
+            <button class="qty-btn" onclick="changeQty('${item}', 1)">+</button>
+          </div>
+        </div>
+        <button class="cart-item-remove" onclick="removeFromCart('${item}')">✕</button>
+      `;
+      itemsEl.appendChild(div);
+    });
+  }
+
+  function toggleCart() {
+    document.getElementById('cartPanel').classList.toggle('open');
+    document.getElementById('cartOverlay').classList.toggle('open');
+  }
+
+  function checkout() {
+    if (Object.keys(cart).length === 0) return;
+    // Build MP summary
+    const items = document.getElementById('mpSummaryItems');
+    items.innerHTML = '';
+    Object.keys(cart).forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'mp-summary-item';
+      div.innerHTML = `<span>${emojis[item] || '🍪'} ${item} x${cart[item]}</span><span>$${((prices[item]||0)*cart[item]).toLocaleString('es-AR')}</span>`;
+      items.appendChild(div);
+    });
+    const total = Object.keys(cart).reduce((s,k) => s+(prices[k]||0)*cart[k], 0);
+    document.getElementById('mpSummaryTotal').textContent = '$' + total.toLocaleString('es-AR');
+    // Close cart and open MP modal
+    toggleCart();
+    document.getElementById('mpOverlay').classList.add('open');
+  }
+
+  function closeMP() {
+    document.getElementById('mpOverlay').classList.remove('open');
+  }
+
+  function closeMPifOutside(e) {
+    if (e.target === document.getElementById('mpOverlay')) closeMP();
+  }
+
+  function confirmarPedido() {
+    const nombre = document.getElementById('mpNombre').value.trim();
+    const email = document.getElementById('mpEmail').value.trim();
+    const tel = document.getElementById('mpTel').value.trim();
+    const direccion = document.getElementById('mpDireccion').value.trim();
+    if (!nombre || !email || !tel || !direccion) {
+      showToast('⚠️ Completá todos los campos');
+      return;
+    }
+    const total = Object.keys(cart).reduce((s,k) => s+(prices[k]||0)*cart[k], 0);
+    const itemsList = Object.keys(cart).map(k => `${k} x${cart[k]}`).join(', ');
+    const msg = `Hola! Quiero hacer un pedido 🍪%0A%0A*Productos:* ${encodeURIComponent(itemsList)}%0A*Total:* $${total.toLocaleString('es-AR')}%0A%0A*Nombre:* ${encodeURIComponent(nombre)}%0A*Email:* ${encodeURIComponent(email)}%0A*Dirección:* ${encodeURIComponent(direccion)}`;
+    closeMP();
+    cart = {};
+    updateCartUI();
+    showToast('🎉 ¡Pedido confirmado! Redirigiendo a WhatsApp...');
+    setTimeout(() => {
+      window.open(`https://wa.me/5492615466940?text=${msg}`, '_blank');
+    }, 1500);
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2800);
+  }
+
+  function filterProductos() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    document.querySelectorAll('.producto-card').forEach(c => {
+      c.style.display = c.dataset.name.includes(q) ? '' : 'none';
+    });
+  }
+
+  function quizSelect(el, galleta, texto) {
+    document.querySelectorAll('.quiz-opt').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    const result = document.getElementById('quizResult');
+    document.getElementById('quizResultTitle').textContent = galleta;
+    document.getElementById('quizResultText').textContent = texto;
+    result.classList.add('visible');
+    setTimeout(() => result.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+  }
+
+  const chatResponses = {
+    'pedido': '¡Claro! Podés realizar tu pedido en la sección Tienda. Hacemos envíos a todo el país. ¿Necesitás más información sobre los tiempos de entrega?',
+    'receta': '¡Tenemos muchas recetas increíbles! En la sección Blog & Recetas encontrás el Cheesecake con Tita, el Milkshake Pepitos y el Postre Rhodesia. ¿Querés los ingredientes de alguna?',
+    'club': 'El Club Terrabusi es nuestra suscripción mensual por $1.999. Incluye snacks sorpresa, 15% de descuento y puntos dobles. ¿Te interesa suscribirte?',
+    'puntos': '¡Con el programa de puntos ganás 1 punto por cada $100 comprados! Los podés canjear por descuentos y productos gratis. ¿Querés saber cómo empezar?',
+    'envio': 'Hacemos envíos a todo el país. El envío es gratis en el Pack Familiar y en el Club Terrabusi. Para otros productos, el costo depende de la zona.',
+    'default': '¡Gracias por tu consulta! Un representante de Terrabusi te va a responder pronto. También podés escribirnos a @terrabusi en redes sociales. 🍪'
+  };
+
+  function sendChat() {
+    const input = document.getElementById('chatInput');
+    const msg = input.value.trim();
+    if (!msg) return;
+    const messages = document.getElementById('chatMessages');
+    const userDiv = document.createElement('div');
+    userDiv.className = 'msg msg-user';
+    userDiv.textContent = msg;
+    messages.appendChild(userDiv);
+    input.value = '';
+    messages.scrollTop = messages.scrollHeight;
+    setTimeout(() => {
+      const lc = msg.toLowerCase();
+      let resp = chatResponses.default;
+      for (const k of Object.keys(chatResponses)) {
+        if (lc.includes(k)) { resp = chatResponses[k]; break; }
+      }
+      const botDiv = document.createElement('div');
+      botDiv.className = 'msg msg-bot';
+      botDiv.textContent = resp;
+      messages.appendChild(botDiv);
+      messages.scrollTop = messages.scrollHeight;
+    }, 900);
+  }
+</script>
+</body>
+</html>
